@@ -11,8 +11,8 @@ File akhir: `TugasProject_CyberSec_Raihan_[NIM].pdf` (dikumpulkan di EdLink).
   dengan Kontrol Akses Berbasis Peran", Nama: Raihan, NIM: [isi],
   Kelas: [isi], Mata Kuliah Cyber Security
 - **Tabel Info Pengumpulan (taruh di halaman pertama, dosen pasti cari ini):**
-  URL Aplikasi Aktif: [isi setelah deploy], URL Repository: [isi setelah
-  push GitHub], Akun Uji Siswa: `siswa@perpus.test` / `password`,
+  URL Aplikasi Aktif: [isi setelah deploy], URL Repository:
+  https://github.com/Mraihanputrawibawa/perpustakaan-smp, Akun Uji Siswa: `siswa@perpus.test` / `password`,
   Akun Uji Petugas: `petugas@perpus.test` / `password`,
   Akun Uji Admin: `admin@perpus.test` / `password`
   (akun keempat untuk pengujian IDOR: `siswa2@perpus.test` / `password`)
