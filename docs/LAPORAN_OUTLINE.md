@@ -102,11 +102,13 @@ peminjaman siswa lain ditolak 403; siswa membuka `/admin/reports`,
 mencatat peminjaman baru dan memproses pengembalian; denda pinjaman
 terlambat 5 hari terhitung tepat Rp2.500; payload SQL Injection gagal
 login; judul buku berisi `<script>` tampil ter-escape; `composer audit`
-bersih. **Yang masih harus diuji manual sebelum laporan selesai:**
-skenario 5 (brute force — login salah >5 kali dalam 1 menit, harus kena
-throttle) dan skenario 8 (tambah parameter `role=admin` di form registrasi,
-peran harus tetap `siswa`); skenario 6 (grade securityheaders.com/SSL Labs)
-menunggu deployment HTTPS. Lampirkan bukti screenshot/output tools di sini.
+bersih; login salah 5 kali dikembalikan ke halaman login dan percobaan
+ke-6 diblokir 429 Too Many Requests (skenario 5, brute force); registrasi
+dengan `role=admin` tetap tersimpan sebagai `siswa` dan akun itu ditolak
+403 di halaman admin (skenario 8, manipulasi peran). **Yang masih harus
+diuji sebelum laporan selesai:** hanya skenario 6 (grade
+securityheaders.com/SSL Labs), yang menunggu deployment HTTPS. Lampirkan
+bukti screenshot/output tools di sini.
 
 ## 8. Tangkapan Layar dan Bukti Deployment
 

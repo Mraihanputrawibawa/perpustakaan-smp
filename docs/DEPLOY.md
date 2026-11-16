@@ -22,18 +22,28 @@ PerpusSMP.
   saat ini) mendeteksi Laravel dan menjalankan `php artisan migrate --force`
   secara otomatis. Jangan tambahkan perintah migrate sendiri di build.
 
-## 1. Push ke GitHub (sekali, dari komputer sendiri)
+## 1. Push ke GitHub (sekali)
+
+Repo lokal di workspace ini **sudah** berupa repo git di branch `main`
+dengan **6 commit bertahap** (inisialisasi, skema DB, fitur RBAC/CRUD/
+peminjaman/laporan, desain UI, dokumentasi, hasil self-testing) — sesuai
+syarat brief yang meminta riwayat commit gradual. **Jangan** `git init`
+ulang atau membuat satu commit baru berisi seluruh project, karena itu
+menghapus riwayat bertahapnya. Yang kurang hanya remote dan push:
 
 ```bash
 cd perpustakaan-smp
-git init
-git add .
-git status        # pastikan .env TIDAK muncul; kalau muncul, jangan lanjut
-git commit -m "PerpusSMP: Laravel library system with RBAC (Cyber Security project)"
-git branch -M main
+git log --oneline     # pastikan 6 commit di atas tampil
+git status            # pastikan bersih, dan .env TIDAK muncul
 git remote add origin https://github.com/<username>/perpustakaan-smp.git
 git push -u origin main
 ```
+
+Catatan: push dari mesin ini memakai token GitHub lewat API
+(`api.github.com`) karena koneksi git langsung ke `github.com` terputus —
+alur tokennya sedang disiapkan di chat. Jangan mulai dari file zip
+sebagai gantinya: zip tidak berisi folder `.git`, jadi push dari zip
+hanya menghasilkan satu commit dan riwayat bertahapnya hilang.
 
 ## 2. Buat project di Railway
 
