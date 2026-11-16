@@ -10,7 +10,7 @@
         <form method="POST" action="{{ route('admin.users.update', $u) }}" style="display:flex;gap:6px">
           @csrf @method('PUT')
           <select name="role" style="margin:0">
-            @foreach(['siswa','petugas','admin'] as $r)<option value="{{ $r }}" @selected($u->role===$r)>{{ $r }}</option>@endforeach
+            @foreach(['siswa','admin'] as $r)<option value="{{ $r }}" @selected($u->role===$r)>{{ $r }}</option>@endforeach
           </select>
           <button type="submit">Simpan</button>
         </form>

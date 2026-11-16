@@ -2,11 +2,10 @@
 
 ## Peran
 - siswa: lihat katalog buku, lihat peminjaman miliknya sendiri
-- petugas: kelola buku, catat peminjaman & pengembalian, lihat semua peminjaman
-- admin: semua hak petugas + kelola kategori, kelola user/peran, laporan
+- admin: merangkap petugas perpustakaan — kelola buku & kategori, catat peminjaman & pengembalian, kelola user/peran, laporan
 
 ## Tabel
-- users: id, name, email unique, password (bcrypt), role (siswa|petugas|admin), kelas, timestamps
+- users: id, name, email unique, password (bcrypt), role (siswa|admin), kelas, timestamps
 - categories: id, name, description, timestamps
 - books: id, category_id FK, title, author, publisher, year, isbn unique nullable,
   shelf, stock (total eksemplar), timestamps

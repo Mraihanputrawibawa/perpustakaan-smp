@@ -10,8 +10,15 @@ desain antarmuka di laporan. Konvensi: `[ ... ]` = tombol/tombol aksi,
 > membulat, hero bergambar besar di dashboard, kartu buku bergaya
 > "Top Destinations" di katalog, dan seksi langkah "Pinjam Semudah 1-2-3".
 > Struktur, elemen, dan alur pada wireframe di bawah ini tidak berubah;
-> yang berubah hanya gaya visualnya (lihat `public/images/hero-perpus.jpg`,
-> gambar hasil generate AI, dilaporkan juga di README).
+> yang berubah hanya gaya visualnya.
+>
+> **Pembaruan kedua (16 Nov 2026, malam):** peran disederhanakan menjadi
+> dua — siswa dan admin (admin merangkap petugas) — dan tampilan didesain
+> ulang menjadi sederhana dan fungsional: tanpa hero bergambar, tanpa
+> kartu gradien/emoji. Dashboard kini berisi sapaan, strip statistik,
+> daftar terlambat (khusus admin), dan tabel peminjaman terbaru; katalog
+> kembali berbentuk tabel. Wireframe di bawah yang menyebut hero/kartu
+> sampul pada dashboard & katalog mengikuti versi sebelumnya.
 
 ## 0. Kerangka Umum (Semua Layar Setelah Login)
 
@@ -28,7 +35,7 @@ desain antarmuka di laporan. Konvensi: `[ ... ]` = tombol/tombol aksi,
 |                  (lebar maks. 1000px, tengah)                    |
 +------------------------------------------------------------------+
 ```
-- `*` hanya tampil untuk staff (petugas & admin). `**` hanya untuk admin.
+- `*` dan `**` hanya tampil untuk admin (admin merangkap petugas perpustakaan).
 - Menu disembunyikan berdasarkan peran di tampilan, **dan** tetap dijaga
   di server (middleware `role:` + Policy) — menyembunyikan menu bukan
   satu-satunya pengaman.
@@ -54,8 +61,8 @@ desain antarmuka di laporan. Konvensi: `[ ... ]` = tombol/tombol aksi,
         | [            Login (penuh)             ] |
         |                                          |
         | Belum punya akun? Daftar                 |
-        | Akun demo: admin@ / petugas@ /          |
-        | siswa@perpus.test — password: password   |
+        | Akun demo: admin@ / siswa@perpus.test  |
+        | — password: password                     |
         +------------------------------------------+
 ```
 - Kartu terpusat, lebar maks. 420px.
@@ -293,12 +300,12 @@ desain antarmuka di laporan. Konvensi: `[ ... ]` = tombol/tombol aksi,
 | Kelola User                                                      |
 | | Nama | Email | Peran (dropdown v) [Simpan] | Aksi          | |
 | | Siswa Demo | siswa@perpus.test | siswa  | [ Hapus ]       | |
-| | Petugas Perpustakaan | petugas@... | petugas | [ Hapus ]   | |
+| | Siswa Kedua | siswa2@perpus.test | siswa | [ Hapus ]          | |
 | +--------------------------------------------------------------+ |
 | [<< Prev]  1 2 3  [Next >>]        (paginasi 15 per halaman)     |
 +------------------------------------------------------------------+
 ```
-- Peran diubah lewat dropdown sebaris (`siswa` / `petugas` / `admin`)
+- Peran diubah lewat dropdown sebaris (`siswa` / `admin`)
   lalu tombol Simpan pada baris yang sama.
 - Pengaman: admin tidak dapat menurunkan perannya sendiri, dan tombol
   Hapus tidak tampil untuk akun sendiri; server memeriksa ulang kedua
@@ -357,16 +364,20 @@ Save as PDF).
 
 ## Ringkasan Akses per Layar
 
-| Layar | Siswa | Petugas | Admin |
-|---|:---:|:---:|:---:|
-| Login & Registrasi | ✓ (publik) | ✓ | ✓ |
-| Dashboard | ✓ (data sendiri) | ✓ (semua) | ✓ (semua) |
-| Katalog & Detail Buku | ✓ lihat | ✓ + kelola | ✓ + kelola |
-| Form Buku | 403 | ✓ | ✓ |
-| Daftar Peminjaman | ✓ (sendiri) | ✓ (semua) | ✓ (semua) |
-| Catat Peminjaman | 403 | ✓ | ✓ |
-| Detail Peminjaman | ✓ (sendiri) | ✓ | ✓ |
-| Proses Pengembalian | — | ✓ | ✓ |
-| Kelola Kategori | 403 | 403 | ✓ |
-| Kelola User | 403 | 403 | ✓ |
-| Laporan & Cetak/PDF | 403 | 403 | ✓ |
+| Layar | Siswa | Admin |
+|---|:---:|:---:|
+| Login & Registrasi | ✓ (publik) | ✓ |
+| Dashboard | ✓ (data sendiri) | ✓ (semua) |
+| Katalog & Detail Buku | ✓ lihat | ✓ + kelola |
+| Form Buku | 403 | ✓ |
+| Daftar Peminjaman | ✓ (sendiri) | ✓ (semua) |
+| Catat Peminjaman | 403 | ✓ |
+| Detail Peminjaman | ✓ (sendiri) | ✓ |
+| Proses Pengembalian | — | ✓ |
+| Kelola Kategori | 403 | ✓ |
+| Kelola User | 403 | ✓ |
+| Laporan & Cetak/PDF | 403 | ✓ |
+
+Catatan: hanya ada dua peran. Admin merangkap petugas perpustakaan,
+sehingga seluruh tugas pengelolaan (buku, peminjaman, pengembalian)
+dilakukan akun admin.

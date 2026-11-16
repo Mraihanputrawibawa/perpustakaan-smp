@@ -10,7 +10,7 @@ class RoleMiddleware
 {
     /**
      * Batasi akses route berdasarkan peran, contoh: ->middleware('role:admin')
-     * atau ->middleware('role:admin,petugas')
+     * atau ->middleware('role:admin')
      */
     public function handle(Request $request, Closure $next, string ...$roles): Response
     {

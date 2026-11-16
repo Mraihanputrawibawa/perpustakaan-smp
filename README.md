@@ -14,7 +14,7 @@ setiap siswa hanya dapat mengakses data peminjamannya sendiri.
 - Registrasi & login (password ter-hash bcrypt, password lemah ditolak)
 - Katalog buku: pencarian judul/pengarang/ISBN, filter kategori, info stok tersedia & lokasi rak
 - Pengelolaan data (CRUD): buku, kategori buku, user/anggota (oleh admin)
-- Peminjaman & pengembalian oleh petugas: jatuh tempo 7 hari, stok otomatis
+- Peminjaman & pengembalian dicatat admin: jatuh tempo 7 hari, stok otomatis
   berkurang/bertambah, denda keterlambatan otomatis Rp500/hari
 - Laporan (admin): rekap peminjaman per kategori, buku paling sering dipinjam,
   jumlah terlambat, total denda, filter tanggal, ekspor CSV, halaman cetak/PDF
@@ -25,8 +25,7 @@ setiap siswa hanya dapat mengakses data peminjamannya sendiri.
 | Peran | Hak akses |
 |---|---|
 | `siswa` | Lihat katalog, lihat riwayat peminjaman miliknya sendiri |
-| `petugas` | Kelola buku, catat peminjaman & pengembalian, lihat semua peminjaman |
-| `admin` | Semua hak petugas + kelola kategori, kelola user & peran, laporan |
+| `admin` | Merangkap petugas perpustakaan: kelola buku & kategori, catat peminjaman & pengembalian, kelola user & peran, laporan |
 
 ## Teknologi
 
@@ -55,7 +54,6 @@ Buka http://127.0.0.1:8000
 | Peran | Email | Password |
 |---|---|---|
 | Admin | admin@perpus.test | password |
-| Petugas | petugas@perpus.test | password |
 | Siswa | siswa@perpus.test | password |
 | Siswa 2 | siswa2@perpus.test | password |
 
@@ -103,10 +101,15 @@ Contoh prompt utama:
 - "Bisakah ganti jadi sistem perpustakaan SMP?"
 - "Buat desain webnya seperti ini" (mengirim contoh desain situs travel modern)
 
-Desain antarmuka diperbarui mengikuti referensi tersebut: hero bergambar
-besar, kartu buku bergaya kartu destinasi, dan seksi langkah peminjaman
-1-2-3. Gambar hero (`public/images/hero-perpus.jpg`) dibuat dengan
-generator gambar AI.
+Desain antarmuka sempat diperbarui mengikuti referensi tersebut (hero
+bergambar besar dan kartu buku bergaya kartu destinasi; gambar hero
+dibuat dengan generator gambar AI), kemudian didesain ulang lagi atas
+permintaan penulis menjadi tampilan yang sederhana dan fungsional —
+tanpa hero, tanpa kartu gradien — dan peran pengguna disederhanakan
+menjadi dua: siswa dan admin (admin merangkap petugas perpustakaan).
+Prompt terakhir: "buat usernya hanya siswa dan admin karena admin itu
+sekalian menjadi petugas dan satu lagi uinya nya kalo bisa jangan
+seperti ai slop".
 
 Seluruh kode hasil AI ditinjau dan diuji manual oleh mahasiswa, terutama
 bagian autentikasi, kontrol akses (policy), dan validasi input. Mahasiswa

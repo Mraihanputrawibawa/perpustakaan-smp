@@ -17,7 +17,7 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         $data = $request->validate([
-            'role' => ['required', Rule::in(['siswa', 'petugas', 'admin'])],
+            'role' => ['required', Rule::in(['siswa', 'admin'])],
         ]);
 
         if ($user->id === $request->user()->id && $data['role'] !== 'admin') {

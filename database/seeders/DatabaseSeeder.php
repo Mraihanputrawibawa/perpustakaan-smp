@@ -14,7 +14,6 @@ class DatabaseSeeder extends Seeder
      * Akun demo untuk pengujian dosen (HANYA untuk lokal/demo —
      * ganti password sebelum dipakai di lingkungan nyata):
      * - admin@perpus.test / password
-     * - petugas@perpus.test / password
      * - siswa@perpus.test / password
      */
     public function run(): void
@@ -24,13 +23,6 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@perpus.test',
             'password' => 'password',
             'role' => 'admin',
-        ]);
-
-        User::create([
-            'name' => 'Petugas Perpustakaan',
-            'email' => 'petugas@perpus.test',
-            'password' => 'password',
-            'role' => 'petugas',
         ]);
 
         $siswa = User::create([

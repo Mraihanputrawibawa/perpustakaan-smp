@@ -33,14 +33,13 @@ class User extends Authenticatable
         return $this->role === 'admin';
     }
 
-    public function isPetugas(): bool
-    {
-        return $this->role === 'petugas';
-    }
-
-    /** Staff perpustakaan: admin dan petugas. */
+    /**
+     * Pengelola perpustakaan. Hanya ada dua peran di aplikasi ini:
+     * siswa dan admin — admin merangkap sebagai petugas perpustakaan
+     * (mengelola buku, mencatat peminjaman/pengembalian, dan laporan).
+     */
     public function isStaff(): bool
     {
-        return in_array($this->role, ['admin', 'petugas'], true);
+        return $this->isAdmin();
     }
 }

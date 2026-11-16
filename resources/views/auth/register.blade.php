@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('content')
 <div class="card auth">
-  <div class="auth-hero"><img src="/images/hero-perpus.jpg" alt="Perpustakaan SMP"></div>
   <h2 style="margin-top:0;color:#14213d">Daftar Akun Siswa</h2>
   <form method="POST" action="{{ route('register') }}">
     @csrf

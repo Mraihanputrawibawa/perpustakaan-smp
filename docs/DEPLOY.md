@@ -98,7 +98,6 @@ railway run php artisan db:seed --force
 Akun demo hasil seed (untuk dosen, seperti di README):
 
 - Admin: `admin@perpus.test` / `password`
-- Petugas: `petugas@perpus.test` / `password`
 - Siswa: `siswa@perpus.test` / `password`
 - Siswa 2 (untuk uji IDOR): `siswa2@perpus.test` / `password`
 
@@ -106,7 +105,7 @@ Akun demo hasil seed (untuk dosen, seperti di README):
 
 - [ ] Buka domain Railway: halaman login tampil, HTTPS aktif (ikon gembok).
 - [ ] Login sebagai ketiga peran; siswa biasa buka `/admin/reports` → 403.
-- [ ] Sebagai petugas, catat 1 peminjaman baru dari katalog, lalu proses
+- [ ] Sebagai admin, catat 1 peminjaman baru dari katalog, lalu proses
       pengembaliannya; cek stok buku berkurang lalu bertambah lagi, dan
       denda Rp500/hari muncul untuk pengembalian terlambat.
 - [ ] Cek laporan admin dan ekspor CSV (`/admin/reports`).

@@ -18,7 +18,7 @@ class BookPolicy
         return true;
     }
 
-    /** Hanya staff perpustakaan (admin/petugas) yang boleh mengelola buku. */
+    /** Hanya admin (merangkap petugas perpustakaan) yang boleh mengelola buku. */
     public function create(User $user): bool
     {
         return $user->isStaff();

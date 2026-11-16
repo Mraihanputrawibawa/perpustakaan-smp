@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('siswa')->index(); // siswa | petugas | admin
+            $table->string('role')->default('siswa')->index(); // siswa | admin
             $table->string('kelas')->nullable();               // contoh: 7A, 8B, 9C (untuk siswa)
         });
 

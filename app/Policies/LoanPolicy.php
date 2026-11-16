@@ -9,7 +9,7 @@ class LoanPolicy
 {
     /**
      * Anti-IDOR: siswa hanya boleh melihat peminjamannya sendiri.
-     * Staff (admin/petugas) boleh melihat semua peminjaman.
+     * Admin (merangkap petugas) boleh melihat semua peminjaman.
      */
     public function view(User $user, Loan $loan): bool
     {

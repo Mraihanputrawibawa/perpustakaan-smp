@@ -13,7 +13,6 @@ File akhir: `TugasProject_CyberSec_Raihan_[NIM].pdf` (dikumpulkan di EdLink).
 - **Tabel Info Pengumpulan (taruh di halaman pertama, dosen pasti cari ini):**
   URL Aplikasi Aktif: [isi setelah deploy], URL Repository:
   https://github.com/Mraihanputrawibawa/perpustakaan-smp, Akun Uji Siswa: `siswa@perpus.test` / `password`,
-  Akun Uji Petugas: `petugas@perpus.test` / `password`,
   Akun Uji Admin: `admin@perpus.test` / `password`
   (akun keempat untuk pengujian IDOR: `siswa2@perpus.test` / `password`)
 
@@ -25,7 +24,7 @@ dan denda dihitung manual, dan riwayat peminjaman siswa lain bisa terlihat
 oleh yang tidak berhak. PerpusSMP membuat peminjaman tercatat digital:
 katalog bisa dicari siswa, peminjaman/pengembalian dicatat petugas, denda
 dihitung otomatis, dan setiap siswa hanya melihat peminjamannya sendiri.
-Tulis tujuan untuk siswa, petugas, dan admin/kepala perpustakaan, plus ruang
+Tulis tujuan untuk siswa dan admin (yang merangkap petugas/kepala perpustakaan), plus ruang
 lingkup aplikasi.
 
 ## 2. Fitur Utama
@@ -50,7 +49,7 @@ ORM, SQLite untuk lokal/demo (dapat diganti MySQL/PostgreSQL lewat `.env`
 tanpa ubah kode). Diagram arsitektur (browser → aplikasi → database),
 skema database 5 tabel (`users, categories, books, loans, activity_logs`
 — detail kolom di `docs/DESIGN.md`), dan diagram peran/use case untuk
-Siswa, Petugas, dan Admin. Data demo awal: 6 buku contoh (termasuk
+Siswa dan Admin. Data demo awal: 6 buku contoh (termasuk
 Matematika Kelas 7 dan Laskar Pelangi) dan 4 akun demo.
 
 ## 4. Penerapan Keamanan
@@ -98,7 +97,7 @@ admin & kelola buku, brute force, HTTPS & security headers, secret &
 dependency audit, manipulasi peran saat registrasi). Hasil yang sudah
 teruji lokal 16 Nov 2026: login ketiga peran berhasil; siswa membuka
 peminjaman siswa lain ditolak 403; siswa membuka `/admin/reports`,
-`/books/create`, dan `/loans/create` semuanya 403; petugas berhasil
+`/books/create`, dan `/loans/create` semuanya 403; admin berhasil
 mencatat peminjaman baru dan memproses pengembalian; denda pinjaman
 terlambat 5 hari terhitung tepat Rp2.500; payload SQL Injection gagal
 login; judul buku berisi `<script>` tampil ter-escape; `composer audit`
