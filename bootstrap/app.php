@@ -14,6 +14,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Di belakang reverse proxy (Railway), percayai header X-Forwarded-*
+        // agar URL & form dibuat dengan skema https, bukan http.
+        $middleware->trustProxies(at: '*');
         $middleware->alias(['role' => RoleMiddleware::class]);
         $middleware->web(append: [SecurityHeaders::class]);
     })
