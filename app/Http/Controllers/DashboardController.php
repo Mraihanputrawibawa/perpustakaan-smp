@@ -35,14 +35,10 @@ class DashboardController extends Controller
             $latest = (clone $my)->with(['book', 'user'])->latest()->take(5)->get();
         }
 
-        $popularBooks = Book::with('category')
-            ->withCount('loans')
-            ->withCount(['loans as active_loans_count' => fn ($q) => $q->whereNull('returned_at')])
-            ->orderByDesc('loans_count')
-            ->orderBy('title')
-            ->take(4)
-            ->get();
+        $overdue = $user->isAdmin()
+            ? Loan::with(['book', 'user'])->whereNull('returned_at')->whereDate('due_date', '<', today())->orderBy('due_date')->take(5)->get()
+            : collect();
 
-        return view('dashboard', compact('stats', 'latest', 'popularBooks'));
+        return view('dashboard', compact('stats', 'latest', 'overdue'));
     }
 }

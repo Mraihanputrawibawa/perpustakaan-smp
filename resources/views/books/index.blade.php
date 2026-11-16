@@ -1,39 +1,38 @@
 @extends('layouts.app')
 @section('content')
-<div class="sec-head" style="margin-top:6px">
-  <h2 style="font-size:1.6rem">Katalog Buku</h2>
-  <p>Jelajahi semua koleksi perpustakaan — klik sampul buku untuk detail dan ketersediaannya.</p>
+<div class="pagehead">
+  <h1>Katalog Buku</h1>
+  <p>Seluruh koleksi perpustakaan. Kolom "Tersedia" menunjukkan eksemplar yang bisa dipinjam saat ini.</p>
 </div>
 
-<form class="filterbar" method="GET" style="margin-bottom:20px">
-  <input type="text" name="search" placeholder="Cari judul / pengarang / ISBN…" value="{{ request('search') }}">
+<form class="filterbar" method="GET">
+  <input type="text" name="search" placeholder="Cari judul, pengarang, atau ISBN" value="{{ request('search') }}">
   <select name="category_id">
     <option value="">Semua kategori</option>
     @foreach($categories as $c)<option value="{{ $c->id }}" @selected(request('category_id')==$c->id)>{{ $c->name }}</option>@endforeach
   </select>
-  <button class="btn" type="submit">Cari</button>
-  @if(auth()->user()->isStaff())<a class="btn btn-green" href="{{ route('books.create') }}">+ Tambah Buku</a>@endif
+  <button type="submit">Cari</button>
+  @if(auth()->user()->isAdmin())<a class="btn btn-secondary" href="{{ route('books.create') }}">Tambah Buku</a>@endif
 </form>
 
-<div class="book-grid">
-  @forelse($books as $i => $b)
+<div class="card" style="padding:8px 18px">
+<table>
+  <tr><th>Judul</th><th>Pengarang</th><th>Kategori</th><th>Rak</th><th>Stok</th><th>Tersedia</th>@if(auth()->user()->isAdmin())<th></th>@endif</tr>
+  @forelse($books as $b)
     @php($tersedia = max(0, $b->stock - $b->dipinjam_count))
-    <div class="book-card">
-      <a class="cover g{{ ($i % 5) + 1 }}" href="{{ route('books.show', $b) }}">
-        <span class="cat">{{ $b->category->name }}</span>
-        <span class="avail {{ $tersedia <= 0 ? 'empty' : '' }}">{{ $tersedia > 0 ? 'Tersedia '.$tersedia : 'Habis' }}</span>
-        <h3>{{ $b->title }}</h3>
-        <small>{{ $b->author }}</small>
-      </a>
-      <div class="book-meta">
-        <span class="loc">Rak {{ $b->shelf ?? '-' }} · Stok {{ $b->stock }}</span>
-        @if(auth()->user()->isStaff())<a href="{{ route('books.edit', $b) }}">Edit</a>@endif
-      </div>
-    </div>
+    <tr>
+      <td><a href="{{ route('books.show', $b) }}">{{ $b->title }}</a></td>
+      <td>{{ $b->author }}</td>
+      <td>{{ $b->category->name }}</td>
+      <td>{{ $b->shelf ?? '-' }}</td>
+      <td>{{ $b->stock }}</td>
+      <td>{{ $tersedia > 0 ? $tersedia : 'Habis' }}</td>
+      @if(auth()->user()->isAdmin())<td><a href="{{ route('books.edit', $b) }}">Edit</a></td>@endif
+    </tr>
   @empty
-    <div class="card"><p class="muted" style="margin:0">Tidak ada buku yang cocok. Coba kata kunci atau kategori lain.</p></div>
+    <tr><td colspan="7" class="muted">Tidak ada buku yang cocok dengan pencarian.</td></tr>
   @endforelse
+</table>
 </div>
-
 <nav class="pager">{{ $books->links() }}</nav>
 @endsection
