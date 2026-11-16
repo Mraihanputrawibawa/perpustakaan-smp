@@ -39,6 +39,12 @@ class DashboardController extends Controller
             ? Loan::with(['book', 'user'])->whereNull('returned_at')->whereDate('due_date', '<', today())->orderBy('due_date')->take(5)->get()
             : collect();
 
-        return view('dashboard', compact('stats', 'latest', 'overdue'));
+        $popular = Book::with('category')
+            ->withCount(['loans', 'loans as dipinjam_count' => fn ($q) => $q->whereNull('returned_at')])
+            ->orderByDesc('loans_count')
+            ->take(4)
+            ->get();
+
+        return view('dashboard', compact('stats', 'latest', 'overdue', 'popular'));
     }
 }

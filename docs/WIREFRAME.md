@@ -12,13 +12,13 @@ desain antarmuka di laporan. Konvensi: `[ ... ]` = tombol/tombol aksi,
 > Struktur, elemen, dan alur pada wireframe di bawah ini tidak berubah;
 > yang berubah hanya gaya visualnya.
 >
-> **Pembaruan kedua (16 Nov 2026, malam):** peran disederhanakan menjadi
-> dua — siswa dan admin (admin merangkap petugas) — dan tampilan didesain
-> ulang menjadi sederhana dan fungsional: tanpa hero bergambar, tanpa
-> kartu gradien/emoji. Dashboard kini berisi sapaan, strip statistik,
-> daftar terlambat (khusus admin), dan tabel peminjaman terbaru; katalog
-> kembali berbentuk tabel. Wireframe di bawah yang menyebut hero/kartu
-> sampul pada dashboard & katalog mengikuti versi sebelumnya.
+> **Pembaruan ketiga (16 Nov 2026, malam):** atas permintaan penulis,
+> tampilan dikembalikan mengikuti referensi situs travel secara lebih
+> setia — font Poppins, latar abu-biru `#bcced2`, panel putih membulat,
+> aksen navy `#16324c`, hero bergambar dengan pencarian pill, kotak
+> fitur abu-biru, statistik, kartu buku bergaya destinasi di dashboard
+> & katalog, dan seksi langkah 1-2-3. Peran tetap dua (siswa & admin).
+> Catatan pembaruan kedua di atas kini riwayat saja.
 
 ## 0. Kerangka Umum (Semua Layar Setelah Login)
 

@@ -107,7 +107,14 @@ dibuat dengan generator gambar AI), kemudian didesain ulang lagi atas
 permintaan penulis menjadi tampilan yang sederhana dan fungsional —
 tanpa hero, tanpa kartu gradien — dan peran pengguna disederhanakan
 menjadi dua: siswa dan admin (admin merangkap petugas perpustakaan).
-Prompt terakhir: "buat usernya hanya siswa dan admin karena admin itu
+Terakhir, atas permintaan penulis, tampilan dikembalikan mengikuti
+referensi situs travel tersebut secara lebih setia — font Poppins,
+palet abu-biru dan navy yang diambil dari contoh gambar, panel putih
+membulat, hero besar, kotak fitur, kartu destinasi, dan langkah 1-2-3 —
+dengan isi dan merek tetap milik PerpusSMP. Prompt terakhir: "bisakah
+kamu membuat ui yang sama persis dengan yang ini mulai dari font dan
+warna" (mengirim ulang contoh desain yang sama).
+Prompt sebelumnya: "buat usernya hanya siswa dan admin karena admin itu
 sekalian menjadi petugas dan satu lagi uinya nya kalo bisa jangan
 seperti ai slop".
 
